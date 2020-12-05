@@ -1,6 +1,6 @@
-site_name: Python Template
-site_url: https://leynier.github.io/python-template
-repo_url: https://github.com/leynier/python-template
+site_name: Kickstarter
+site_url: https://codestrange.github.io/kickstarter
+repo_url: https://github.com/codestrange/kickstarter
 
 theme:
   name: material

@@ -1,10 +1,12 @@
-# Python Template
+# Kickstarter
 
 ## Contributions are highly appreciated
 
 ### All contributors will be granted credit on the following list
 
 * Leynier Gutiérrez González ([@leynier](https://github.com/leynier))
+* Carlos Bermudez Porto ([@cbermudez97](https://github.com/cbermudez97))
+* Tony Raúl Blanco Fernández ([@70nybl4nc0](https://github.com/70nybl4nc0))
 
 You can help out by:
 
@@ -24,7 +26,7 @@ We're using the following branches to manage work:
 
 ## How to report bugs
 
-We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/leynier/python-template/issues/new/choose); it's that easy!
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/codestrange/kickstarter/issues/new/choose); it's that easy!
 
 ### Write bug reports with detail, background, and sample code
 
