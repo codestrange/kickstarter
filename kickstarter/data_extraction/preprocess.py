@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List
+from typing import Dict, Iterable, List
 
 from kickstarter.models import CategoryModel, CreatorModel, ProjectModel
 
@@ -56,7 +56,7 @@ def process_project(
 
 def process(input_dir: str = ".data/raw", output_dic: str = ".data/process"):
 
-    files: List[str] = get_json_paths(input_dir)
+    files: Iterable[str] = get_json_paths(input_dir)
 
     projects: Dict[int, ProjectModel] = {}
     categories: Dict[int, CategoryModel] = {}
