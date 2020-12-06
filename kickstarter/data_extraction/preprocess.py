@@ -49,3 +49,6 @@ def process_new_project(
         categories[category.id] = category
         creators[creator.id] = creator
 
+
+def get_json_paths(folder_path: str) -> List[str]:
+    raise NotImplementedError()
