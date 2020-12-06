@@ -1,5 +1,6 @@
 import json
-from typing import Dict, List
+import os
+from typing import Dict, Iterable, List
 
 from kickstarter.models import CategoryModel, CreatorModel, ProjectModel
 
@@ -40,7 +41,6 @@ def process_new_project(
     project = ProjectModel(**project_dict)
     category = CategoryModel(**project_dict["category"])
     creator = CreatorModel(**project_dict["creator"])
-
     if (
         project.id not in projects
         or project.state_changed_at > projects[project.id].state_changed_at
@@ -50,5 +50,11 @@ def process_new_project(
         creators[creator.id] = creator
 
 
-def get_json_paths(folder_path: str) -> List[str]:
-    raise NotImplementedError()
+def get_json_paths(folder_path: str) -> Iterable[str]:
+    for dir_entry in os.scandir(folder_path):
+        if dir_entry.is_file():
+            if dir_entry.name.endswith(".json"):
+                yield dir_entry.path
+        elif dir_entry.is_dir():
+            for item in get_json_paths(dir_entry.path):
+                yield item
