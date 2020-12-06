@@ -1,8 +1,9 @@
 from typing import Dict, List
-from ..models import ProjectModel, CategoryModel
 
+from ..models import CategoryModel, ProjectModel
 
 processors: list = []
+
 
 def subscribe(processor):
     global processors
@@ -10,9 +11,9 @@ def subscribe(processor):
     return processor
 
 
-def process(projects:List[ProjectModel], categories:Dict[int, CategoryModel]):
+def process(projects: List[ProjectModel], categories: Dict[int, CategoryModel]):
     global processors
-    acummulators: list = [None]*len(processors)
+    acummulators: list = [None] * len(processors)
     for project in projects:
         for index, processor in enumerate(processors):
             acummulators[index] = processor(categories, project, acummulators[index])
