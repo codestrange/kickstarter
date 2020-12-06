@@ -54,7 +54,10 @@ def process_project(
     creators[creator.id] = creator
 
 
-def process(files: List[str], output_dic: str = ".data/process"):
+def process(input_dir: str = ".data/raw", output_dic: str = ".data/process"):
+
+    files: List[str] = get_json_paths(input_dir)
+
     projects: Dict[int, ProjectModel] = {}
     categories: Dict[int, CategoryModel] = {}
     creators: Dict[int, CreatorModel] = {}
@@ -70,6 +73,7 @@ def process(files: List[str], output_dic: str = ".data/process"):
 
     with open(f"{output_dic}/projects.json", "w+") as file:
         json.dump(projects, fp=file)
+
 
 def get_json_paths(folder_path: str) -> List[str]:
     raise NotImplementedError()
