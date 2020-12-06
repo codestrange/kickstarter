@@ -5,12 +5,7 @@ from typing import Dict, List, Tuple, cast
 from .models import CategoryModel, ProjectModel
 from .processing import top_grossing_categories  # noqa: F401
 from .processing import top_successful_categories  # noqa: F401
-from .processing import (
-    GrossingCategoriesModel,
-    SuccessfulCategoriesModel,
-    process,
-    select_recurrents,
-)
+from .processing import GrossingCategoriesModel, SuccessfulCategoriesModel, process
 
 
 def load_json() -> Tuple[
@@ -56,9 +51,11 @@ def get_favorite_categories(
             item = cast(SuccessfulCategoriesModel, item)
             successful_categories = item.top[:25]
             successful_categories_model = item
+    grossing_categories_set = set(grossing_categories)
+    successful_categories_set = set(successful_categories)
     inter = cast(
         List[CategoryModel],
-        select_recurrents([grossing_categories, successful_categories], 5),
+        list(set.intersection(grossing_categories_set, successful_categories_set)),
     )
     return (
         crossing_categories_model,
