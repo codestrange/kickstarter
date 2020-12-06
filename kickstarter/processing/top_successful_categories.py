@@ -2,9 +2,10 @@ from collections import defaultdict
 from typing import Dict, List, Optional, Tuple
 
 from ..models import CategoryModel, ProjectModel
+from . import subscribe
 
 
-class Model:
+class SuccessfulCategoriesModel:
     def __init__(self, categories: Dict[int, CategoryModel]):
         self.categories_total: Dict[int, int] = defaultdict(lambda: 0)
         self.categories_success: Dict[int, int] = defaultdict(lambda: 0)
@@ -24,13 +25,14 @@ class Model:
         return result
 
 
-def top_grossing_categories(
+@subscribe
+def top_successful_categories(
     categories: Dict[int, CategoryModel],
     project: Optional[ProjectModel] = None,
-    model: Optional[Model] = None,
-) -> Model:
+    model: Optional[SuccessfulCategoriesModel] = None,
+) -> SuccessfulCategoriesModel:
     if model is None:
-        model = Model(categories)
+        model = SuccessfulCategoriesModel(categories)
     if project is not None:
         model.categories_total[project.category.id] += 1
         model.categories_success[project.category.id] += (
