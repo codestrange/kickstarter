@@ -12,7 +12,7 @@ class Model:
 
     @property
     def top(self) -> List[CategoryModel]:
-        order: List[Tuple[int, int]] = []
+        order: List[Tuple[float, int]] = []
         for key in self.categories_success:
             total = self.categories_total[key]
             success = self.categories_success[key]
@@ -33,5 +33,7 @@ def top_grossing_categories(
         model = Model(categories)
     if project is not None:
         model.categories_total[project.category.id] += 1
-        model.categories_success[project.category.id] += 1 if project.state == "successful" else 0
+        model.categories_success[project.category.id] += (
+            1 if project.state == "successful" else 0
+        )
     return model
