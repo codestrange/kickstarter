@@ -1,13 +1,19 @@
 from typing import Dict, List, Tuple
 
 import pandas as pd
+import plotly.graph_objects as go
 import streamlit as st
 from PIL import Image
 
 from kickstarter.core import get_favorite_categories as get_favorite_categories_raw
 from kickstarter.core import load_json as load_json_raw
 from kickstarter.models import CategoryModel, ProjectModel
-from kickstarter.processing import GrossingCategoriesModel, SuccessfulCategoriesModel
+from kickstarter.processing import (
+    GrossingCategoriesModel,
+    MonthlyCategoriesSuccessModel,
+    MonthlyCategoriesTotalsModel,
+    SuccessfulCategoriesModel,
+)
 
 image = Image.open("images/logo.png")
 st.image(image, use_column_width=True)
@@ -29,6 +35,9 @@ def get_favorite_categories(
     List[CategoryModel],
     List[CategoryModel],
     List[CategoryModel],
+    MonthlyCategoriesSuccessModel,
+    MonthlyCategoriesTotalsModel,
+    Dict[int, Tuple[List[int], List[int]]],
 ]:
     return get_favorite_categories_raw(projects, categories)
 
@@ -98,6 +107,9 @@ favorite_categories: Tuple[
     List[CategoryModel],
     List[CategoryModel],
     List[CategoryModel],
+    MonthlyCategoriesSuccessModel,
+    MonthlyCategoriesTotalsModel,
+    Dict[int, Tuple[List[int], List[int]]],
 ] = get_favorite_categories(
     *load_json()  # type: ignore
 )
@@ -167,8 +179,42 @@ el comportamiento de estas en los últimos años.
 
 En las siguientes gráficas mostramos la cantidad de proyectos, asi como la
 cantidad de estos que fueron exitosos, de estas categorías por mes durante
-los años del 2009 al 2018.
+los años del 2009 al 2020.
 """
+
+timeline = go.Figure()  # type: ignore
+
+for cat in favorite_categories[4]:
+    timeline.add_scatter(
+        x=[
+            favorite_categories[6].dates[i]
+            for i in range(len(favorite_categories[5].dates))
+        ],
+        y=[
+            favorite_categories[6].categories[cat.id][i]
+            for i in range(len(favorite_categories[5].dates))
+        ],
+        name=cat.name,
+        opacity=0.9,
+    )
+    timeline.add_scatter(
+        x=[
+            favorite_categories[5].dates[i]
+            for i in range(len(favorite_categories[5].dates))
+        ],
+        y=[
+            favorite_categories[5].categories[cat.id][i]
+            for i in range(len(favorite_categories[5].dates))
+        ],
+        name=cat.name + " Exitosos",
+        opacity=0.9,
+    )
+
+timeline.update_layout(
+    title_text="Cantidad de Proyectos vs Cantidad de Proyectos Exitosos",
+    xaxis_rangeslider_visible=True,
+)
+st.write(timeline)
 
 """
 Teniendo en cuenta la información anterior podemos notar que muchas de las
@@ -193,3 +239,42 @@ y pueden ser decisivas para un proyecto.
 A continuación analizaremos como se comportan las categorías que han sido y son
 más exitosas dependiendo del més del año en que sus proyectos fueron dados a conocer.
 """
+
+category_selected = st.selectbox(
+    "Categorías:",
+    options=[item.id for item in favorite_categories[4]],
+    format_func=lambda x: favorite_categories[0].categories[x].name,
+)
+
+months = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "obtubre",
+    "noviembre",
+    "diciembre",
+]
+
+successfuls = favorite_categories[7][category_selected][0]
+totals = favorite_categories[7][category_selected][1]
+
+fig_cat_months_rel = go.Figure(  # type: ignore
+    data=[
+        go.Bar(name="Total", x=months, y=totals),  # type: ignore
+        go.Bar(name="Éxitos", x=months, y=successfuls),  # type: ignore
+    ]
+)
+
+fig_cat_months_rel.update_layout(
+    title_text="Categoría: "
+    + f"{favorite_categories[0].categories[category_selected].name}",
+    barmode="overlay",
+)
+
+st.write(fig_cat_months_rel)

@@ -1,6 +1,6 @@
 from collections import defaultdict
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, Optional
 
 from ..models import CategoryModel, ProjectModel
 from . import subscribe
@@ -11,9 +11,11 @@ class MonthlyCategoriesTotalsModel:
         counter: int = 0
         self.dates: Dict[int, datetime] = dict()
         self._index: Dict[datetime, int] = dict()
-        self.categories: Dict[int, Dict[int, int]] = defaultdict(lambda: defaultdict(lambda: 0))
+        self.categories: Dict[int, Dict[int, int]] = defaultdict(
+            lambda: defaultdict(lambda: 0)
+        )
 
-        for year in range(start_year, end_year+1):
+        for year in range(start_year, end_year + 1):
             for month in range(1, 13):
                 date = datetime(year, month, 1)
                 self.dates[counter] = date
@@ -21,10 +23,11 @@ class MonthlyCategoriesTotalsModel:
                 counter += 1
 
     def count(self, project: ProjectModel):
-        to_count_date: datetime = datetime(project.state_changed_at.year, project.state_changed_at.month, 1)
+        to_count_date: datetime = datetime(
+            project.state_changed_at.year, project.state_changed_at.month, 1
+        )
         index: int = self._index[to_count_date]
-        self.categories[project.id][index] += 1
-            
+        self.categories[project.category.id][index] += 1
 
 
 @subscribe
