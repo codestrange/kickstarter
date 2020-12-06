@@ -15,7 +15,7 @@ class GrossingCategoriesModel:
         order: List[Tuple[int, int]] = []
         for key, value in self.counter.items():
             order.append((value, key))
-        order.sort()
+        order.sort(reverse=True)
         result: List[CategoryModel] = []
         for item in order:
             result.append(self.categories[item[1]])

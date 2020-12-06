@@ -13,7 +13,7 @@ image = Image.open("images/logo.png")
 st.image(image, use_column_width=True)
 
 
-@st.cache
+# @st.cache
 def load_json() -> Tuple[
     List[ProjectModel],
     Dict[int, CategoryModel],
@@ -21,7 +21,7 @@ def load_json() -> Tuple[
     return load_json_raw()
 
 
-@st.cache
+# @st.cache
 def get_favorite_categories(
     projects: List[ProjectModel],
     categories: Dict[int, CategoryModel],
@@ -103,6 +103,31 @@ favorite_categories: Tuple[
 ] = get_favorite_categories(
     *load_json()  # type: ignore
 )
+
+data_frame = pd.DataFrame(
+    [
+        {
+            "name": item.name,
+            "pleged": favorite_categories[0].counter[item.id],
+        }
+        for item in favorite_categories[2]
+    ]
+)
+
+st.write(data_frame)
+
+data_frame = pd.DataFrame(
+    [
+        {
+            "name": item.name,
+            "success": favorite_categories[1].categories_success[item.id]
+            / favorite_categories[1].categories_total[item.id],
+        }
+        for item in favorite_categories[3]
+    ]
+)
+
+st.write(data_frame)
 
 data_frame = pd.DataFrame(
     [

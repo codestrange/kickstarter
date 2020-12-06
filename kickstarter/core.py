@@ -3,6 +3,8 @@ import os
 from typing import Dict, List, Tuple, cast
 
 from .models import CategoryModel, ProjectModel
+from .processing import top_grossing_categories  # noqa: F401
+from .processing import top_successful_categories  # noqa: F401
 from .processing import (
     GrossingCategoriesModel,
     SuccessfulCategoriesModel,
@@ -15,20 +17,12 @@ def load_json() -> Tuple[
     List[ProjectModel],
     Dict[int, CategoryModel],
 ]:
-    projects_json = json.load(
-        open(
-            os.path.join("data", "projects.json"),
-            mode="r",
-            encoding="utf-8",
-        )
-    )
-    categories_json = json.load(
-        open(
-            os.path.join("data", "categories.json"),
-            mode="r",
-            encoding="utf-8",
-        )
-    )
+    file = open(os.path.join("data", "projects.json"), mode="r", encoding="utf-8")
+    projects_json = json.load(file)
+    file.close()
+    file = open(os.path.join("data", "categories.json"), mode="r", encoding="utf-8")
+    categories_json = json.load(file)
+    file.close()
     projects: List[ProjectModel] = []
     for item in projects_json:
         projects.append(ProjectModel(**item))
@@ -54,11 +48,11 @@ def get_favorite_categories(
     crossing_categories_model: GrossingCategoriesModel = None  # type: ignore
     successful_categories_model: SuccessfulCategoriesModel = None  # type: ignore
     for item in results:
-        if item is GrossingCategoriesModel:
+        if isinstance(item, GrossingCategoriesModel):
             item = cast(GrossingCategoriesModel, item)
             grossing_categories = item.top[:25]
             crossing_categories_model = item
-        elif item is SuccessfulCategoriesModel:
+        elif isinstance(item, SuccessfulCategoriesModel):
             item = cast(SuccessfulCategoriesModel, item)
             successful_categories = item.top[:25]
             successful_categories_model = item
@@ -71,5 +65,5 @@ def get_favorite_categories(
         successful_categories_model,
         grossing_categories,
         successful_categories,
-        inter,
+        list(inter),
     )

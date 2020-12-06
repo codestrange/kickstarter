@@ -17,8 +17,8 @@ class SuccessfulCategoriesModel:
         for key in self.categories_success:
             total = self.categories_total[key]
             success = self.categories_success[key]
-            order.append(((total / success) * 100, key))
-        order.sort()
+            order.append((success * 100 / total, key))
+        order.sort(reverse=True)
         result: List[CategoryModel] = []
         for item in order:
             result.append(self.categories[item[1]])
