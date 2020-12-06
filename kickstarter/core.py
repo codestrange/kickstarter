@@ -58,7 +58,7 @@ def get_favorite_categories(
             successful_categories_model = item
     inter = cast(
         List[CategoryModel],
-        select_recurrents([grossing_categories, successful_categories], 10),
+        select_recurrents([grossing_categories, successful_categories], 5),
     )
     return (
         crossing_categories_model,
