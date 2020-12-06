@@ -28,3 +28,9 @@ class ProjectModel(BaseModel):
         result["created_at"] = self.created_at.timestamp()
         result["launched_at"] = self.launched_at.timestamp()
         return result
+
+    def __eq__(self, o: "ProjectModel") -> bool:
+        return self.id == o.id
+
+    def __hash__(self) -> int:
+        return self.id
