@@ -1,4 +1,8 @@
+from datetime import datetime
+
 from pydantic import BaseModel
+
+from . import CategoryBaseModel, CreatorBaseModel
 
 
 class ProjectModel(BaseModel):
@@ -14,8 +18,10 @@ class ProjectModel(BaseModel):
     currency: str
     currency_symbol: str
     currency_trailing_code: bool
-    deadline: int
-    state_changed_at: int
-    created_at: int
-    launched_at: int
+    deadline: datetime
+    state_changed_at: datetime
+    created_at: datetime
+    launched_at: datetime
     backers_count: int
+    category: CategoryBaseModel
+    creator: CreatorBaseModel
