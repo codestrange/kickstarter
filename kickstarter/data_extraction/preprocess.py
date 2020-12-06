@@ -4,7 +4,7 @@ from typing import Dict, List
 from kickstarter.models import CategoryModel, CreatorModel, ProjectModel
 
 
-def process_json(
+def process_file(
     filename: str,
     projects: Dict[int, ProjectModel],
     categories: Dict[int, CategoryModel],
@@ -22,16 +22,16 @@ def process_json(
             for proyects_dict_wrapper in jsondata:
                 projects_dict_list: List[dict] = proyects_dict_wrapper["projects"]
                 for project_dict in projects_dict_list:
-                    process_new_project(project_dict, projects, categories, creators)
+                    process_project(project_dict, projects, categories, creators)
         elif filetype == "{":
             for line in file:
                 project_dict = json.loads(line)["data"]
-                process_new_project(project_dict, projects, categories, creators)
+                process_project(project_dict, projects, categories, creators)
         else:
             raise Exception("Invalid file format")
 
 
-def process_new_project(
+def process_project(
     project_dict: dict,
     projects: Dict[int, ProjectModel],
     categories: Dict[int, CategoryModel],
@@ -49,6 +49,27 @@ def process_new_project(
         categories[category.id] = category
         creators[creator.id] = creator
 
+    projects[project.id] = project
+    categories[category.id] = category
+    creators[creator.id] = creator
+
+
+def process(files: List[str], output_dic: str = ".data/process"):
+    projects: Dict[int, ProjectModel] = {}
+    categories: Dict[int, CategoryModel] = {}
+    creators: Dict[int, CreatorModel] = {}
+
+    for file in files:
+        process_file(file, projects, categories, creators)
+
+    with open(f"{output_dic}/categories.json", "w+") as file:
+        json.dump(categories, fp=file)
+
+    with open(f"{output_dic}/creators.json", "w+") as file:
+        json.dump(creators, fp=file)
+
+    with open(f"{output_dic}/projects.json", "w+") as file:
+        json.dump(projects, fp=file)
 
 def get_json_paths(folder_path: str) -> List[str]:
     raise NotImplementedError()
