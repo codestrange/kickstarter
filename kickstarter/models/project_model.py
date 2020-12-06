@@ -8,16 +8,11 @@ from . import CategoryBaseModel, CreatorBaseModel
 class ProjectModel(BaseModel):
     id: int
     name: str
-    blurb: str
     goal: int
-    pladged: int
+    pledged: int
     state: str
-    slug: str
-    disable_comunication: bool
-    coutry: str
+    country: str
     currency: str
-    currency_symbol: str
-    currency_trailing_code: bool
     deadline: datetime
     state_changed_at: datetime
     created_at: datetime

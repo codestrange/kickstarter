@@ -18,18 +18,23 @@ def process_file(
     ) as file:
         filetype = file.read(1)
         file.seek(0)
+        projects_dict_list: List[dict] = []
+
         if filetype == "[":
             jsondata: List[dict] = json.load(file)
             for proyects_dict_wrapper in jsondata:
-                projects_dict_list: List[dict] = proyects_dict_wrapper["projects"]
-                for project_dict in projects_dict_list:
-                    process_project(project_dict, projects, categories, creators)
+                projects_dict_list += proyects_dict_wrapper["projects"]
         elif filetype == "{":
             for line in file:
-                project_dict = json.loads(line)["data"]
-                process_project(project_dict, projects, categories, creators)
+                maybe = json.loads(line)["data"]
+                if "projects" in maybe:
+                    projects_dict_list += maybe["projects"]
+                else:
+                    projects_dict_list.append(maybe)
         else:
             raise Exception("Invalid file format")
+        for project_dict in projects_dict_list:
+            process_project(project_dict, projects, categories, creators)
 
 
 def process_project(
@@ -63,16 +68,36 @@ def process(input_dir: str = ".data/raw", output_dic: str = ".data/process"):
     creators: Dict[int, CreatorModel] = {}
 
     for file in files:
+        print(f"Process file:\n {file}")
         process_file(file, projects, categories, creators)
+        print(f"{len(projects)} processed")
 
     with open(f"{output_dic}/categories.json", "w+") as file:
-        json.dump(categories, fp=file)
+        json.dump(
+            {str(key): value.to_json() for key, value in categories.items()},
+            fp=file,
+            ensure_ascii=True,
+            indent=2,
+            separators=(", ", ": "),
+        )
 
     with open(f"{output_dic}/creators.json", "w+") as file:
-        json.dump(creators, fp=file)
+        json.dump(
+            {str(key): value.to_json() for key, value in creators.items()},
+            fp=file,
+            ensure_ascii=True,
+            indent=2,
+            separators=(", ", ": "),
+        )
 
     with open(f"{output_dic}/projects.json", "w+") as file:
-        json.dump(projects, fp=file)
+        json.dump(
+            [value.to_json() for key, value in projects.items()],
+            fp=file,
+            ensure_ascii=True,
+            indent=2,
+            separators=(", ", ": "),
+        )
 
 
 def get_json_paths(folder_path: str) -> Iterable[str]:

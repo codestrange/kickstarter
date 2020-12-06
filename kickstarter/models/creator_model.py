@@ -8,7 +8,6 @@ class CreatorBaseModel(BaseModel):
 class CreatorModel(CreatorBaseModel):
     id: int
     name: str
-    slug: str
 
     def to_json(self):
         return self.dict()
