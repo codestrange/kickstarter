@@ -13,7 +13,6 @@ image = Image.open("images/logo.png")
 st.image(image, use_column_width=True)
 
 
-# @st.cache
 def load_json() -> Tuple[
     List[ProjectModel],
     Dict[int, CategoryModel],
@@ -21,7 +20,6 @@ def load_json() -> Tuple[
     return load_json_raw()
 
 
-# @st.cache
 def get_favorite_categories(
     projects: List[ProjectModel],
     categories: Dict[int, CategoryModel],
@@ -104,30 +102,34 @@ favorite_categories: Tuple[
     *load_json()  # type: ignore
 )
 
-data_frame = pd.DataFrame(
-    [
-        {
-            "name": item.name,
-            "pleged": favorite_categories[0].counter[item.id],
-        }
-        for item in favorite_categories[2]
-    ]
-)
+col1, col2 = st.beta_columns(2)
 
-st.write(data_frame)
+with col1:
+    data_frame = pd.DataFrame(
+        [
+            {
+                "name": item.name,
+                "pleged": favorite_categories[0].counter[item.id],
+            }
+            for item in favorite_categories[2]
+        ]
+    )
+    st.write("Top 25 - Más dinero recaudado")
+    st.write(data_frame)
 
-data_frame = pd.DataFrame(
-    [
-        {
-            "name": item.name,
-            "success": favorite_categories[1].categories_success[item.id]
-            / favorite_categories[1].categories_total[item.id],
-        }
-        for item in favorite_categories[3]
-    ]
-)
-
-st.write(data_frame)
+with col2:
+    data_frame = pd.DataFrame(
+        [
+            {
+                "name": item.name,
+                "success": favorite_categories[1].categories_success[item.id]
+                / favorite_categories[1].categories_total[item.id],
+            }
+            for item in favorite_categories[3]
+        ]
+    )
+    st.write("Top 25 - Mejor porciento de metas cumplidas")
+    st.write(data_frame)
 
 data_frame = pd.DataFrame(
     [
@@ -141,7 +143,7 @@ data_frame = pd.DataFrame(
     ]
 )
 
-st.write(data_frame)
+st.dataframe(data_frame)
 
 """
 ### ¿Cómo se han comportado estas categorías a lo largo del tiempo?
