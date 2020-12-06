@@ -105,45 +105,57 @@ favorite_categories: Tuple[
 col1, col2 = st.beta_columns(2)
 
 with col1:
-    data_frame = pd.DataFrame(
-        [
-            {
-                "name": item.name,
-                "pleged": favorite_categories[0].counter[item.id],
-            }
-            for item in favorite_categories[2]
-        ]
+    st.write("**Top 25 - Más dinero recaudado**")
+    st.write(
+        pd.DataFrame(
+            [
+                {
+                    "Nombre": item.name,
+                    "$ Recaudados": favorite_categories[0].counter[item.id],
+                }
+                for item in favorite_categories[2]
+            ]
+        )
     )
-    st.write("Top 25 - Más dinero recaudado")
-    st.write(data_frame)
 
 with col2:
-    data_frame = pd.DataFrame(
-        [
-            {
-                "name": item.name,
-                "success": favorite_categories[1].categories_success[item.id]
-                / favorite_categories[1].categories_total[item.id],
-            }
-            for item in favorite_categories[3]
-        ]
+    st.write("**Top 25 - Mejor porciento de exitos**")
+    st.write(
+        pd.DataFrame(
+            [
+                {
+                    "Nombre": item.name,
+                    "% Exitos": str(
+                        round(
+                            favorite_categories[1].categories_success[item.id]
+                            / favorite_categories[1].categories_total[item.id]
+                            * 100,
+                            2,
+                        )
+                    )
+                    + "%",
+                }
+                for item in favorite_categories[3]
+            ]
+        )
     )
-    st.write("Top 25 - Mejor porciento de metas cumplidas")
-    st.write(data_frame)
 
-data_frame = pd.DataFrame(
-    [
-        {
-            "name": item.name,
-            "pleged": favorite_categories[0].counter[item.id],
-            "success": favorite_categories[1].categories_success[item.id]
-            / favorite_categories[1].categories_total[item.id],
-        }
-        for item in favorite_categories[4]
-    ]
-)
+st.write("**Categorías más exitosas**")
 
-st.dataframe(data_frame)
+for item in favorite_categories[4]:
+    name = item.name
+    pleged = favorite_categories[0].counter[item.id]
+    success = round(
+        favorite_categories[1].categories_success[item.id]
+        / favorite_categories[1].categories_total[item.id]
+        * 100,
+        2,
+    )
+    f"""
+    * {name}
+        * Dinero Recaudado: {pleged}
+        * Porciento de Exitos: {success}%
+    """
 
 """
 ### ¿Cómo se han comportado estas categorías a lo largo del tiempo?
