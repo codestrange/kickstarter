@@ -406,3 +406,37 @@ indicador para entender el entorno de Kickstarter. Se puede observar como la
 cantidad de proyectos por cada nivel de financiación han ido creciendo
 equitativamente, manteniendo una homogeneidad en ese sentido.
 """
+
+"""
+## ¿Por qué el auge de los Juegos de Mesa en Kickstarter?
+
+Uno de los motivos más claros es que Kickstarter ofrece la oportunidad de
+que las ideas de empresas pequeñas y diseñadores individuales de juegos se
+materialicen. Antes de la creación de Kickstarter, las ideas de los
+diseñadores de juegos de mesa eran presentadas a los editores de grandes
+compañías y esperar a que fueran elegidas para financiamiento y publicación,
+o por lo contrario, el financiamiento tendría que correr por el diseñador lo
+cual impedía grandemente la creación de los juegos de mesa.
+
+Otro factor a tener en cuenta es la competencia, al disminuir el nivel de
+entrada en la industria de juegos de mesa, ha provocado un crecimiento de la
+calidad de estos. A medida que los diseñadores de juegos compiten por hacerse
+notar en la inmensa cantidad de proyectos, los impulsa a explorar nuevas
+mecánicas de juego creativas. El desarrollo de la impresión 3D ha provocado
+un auge en el uso de miniaturas elaboradas, los niveles de compromiso han
+llevado a una mayor variedad de materiales de calidad como madera o metal, y
+un enfoque cada vez mayor en la apariencia estética de los juegos se ha
+derivado de la necesidad de captar la atención de posibles patrocinadores.
+Como usuario consumidor, esto da como resultado una variedad más amplia de
+géneros, juegos más atractivos, reglas y conceptos más creativos.
+
+El feedback es otro factor importante, Kickstarter no sólo ofrece una
+plataforma en la que se financian productos, sino también un sentido de
+comunidad entre el creador y los patrocinadores del proyecto. Esto permite
+que tanto los diseñadores de juegos como los usuarios interactúen entre sí a
+través de la sección de comentarios, dando a los usuarios una valoración del
+producto y a los diseñadores una idea de la aceptación del producto. La
+comunidad se convierte en parte de una narrativa en la que ellos y los
+desarrolladores luchan juntos contra el tiempo para alcanzar la fecha límite
+de financiación y los ambiciosos objetivos.
+"""
