@@ -17,4 +17,6 @@ def process(projects: List[ProjectModel], categories: Dict[int, CategoryModel]):
     for project in projects:
         for index, processor in enumerate(processors):
             acummulators[index] = processor(categories, project, acummulators[index])
+    for index, processor in enumerate(processors):
+        acummulators[index] = processor(categories, None, acummulators[index])
     return acummulators

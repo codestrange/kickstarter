@@ -7,6 +7,7 @@ from .monthly_categories_total import (  # noqa: F401
     MonthlyCategoriesTotalsModel,
     monthly_categories_totals,
 )
+from .tabletop_games import TabletopGamesModel, tabletop_games  # noqa: F401
 from .top_grossing_categories import (  # noqa: F401
     GrossingCategoriesModel,
     top_grossing_categories,
