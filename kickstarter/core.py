@@ -10,6 +10,7 @@ from .processing import (
     MonthlyCategoriesSuccessModel,
     MonthlyCategoriesTotalsModel,
     SuccessfulCategoriesModel,
+    TabletopGamesModel,
     process,
 )
 
@@ -45,6 +46,7 @@ def get_favorite_categories(
     MonthlyCategoriesSuccessModel,
     MonthlyCategoriesTotalsModel,
     Dict[int, Tuple[List[int], List[int]]],
+    TabletopGamesModel,
 ]:
     results = process(projects, categories)
     grossing_categories: List[CategoryModel] = []
@@ -55,6 +57,7 @@ def get_favorite_categories(
         None
     )  # type: ignore
     monthly_categories_totals_model: MonthlyCategoriesTotalsModel = None  # type: ignore
+    tabletop_games_model: TabletopGamesModel = None  # type: ignore
     for item in results:
         if isinstance(item, GrossingCategoriesModel):
             item = cast(GrossingCategoriesModel, item)
@@ -70,6 +73,9 @@ def get_favorite_categories(
         elif isinstance(item, MonthlyCategoriesTotalsModel):
             item = cast(MonthlyCategoriesTotalsModel, item)
             monthly_categories_totals_model = item
+        elif isinstance(item, TabletopGamesModel):
+            item = cast(TabletopGamesModel, item)
+            tabletop_games_model = item
     grossing_categories_set = set(grossing_categories)
     successful_categories_set = set(successful_categories)
     inter = cast(
@@ -97,4 +103,5 @@ def get_favorite_categories(
         monthly_categories_success_model,
         monthly_categories_totals_model,
         by_months,
+        tabletop_games_model,
     )

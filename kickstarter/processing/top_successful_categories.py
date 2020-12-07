@@ -24,6 +24,25 @@ class SuccessfulCategoriesModel:
             result.append(self.categories[item[1]])
         return result
 
+    def to_json(self):
+        return {
+            "categories_total": self.categories_total,
+            "categories_success": self.categories_success,
+            "categories": {key: value.dict() for key, value in self.categories.items()},
+        }
+
+    @staticmethod
+    def from_json(data):
+        categories = {
+            key: CategoryModel(**value) for key, value in data["categories"].items()
+        }
+        result = SuccessfulCategoriesModel(categories)
+        result.categories_total = defaultdict(lambda: 0)
+        result.categories_total.update(data["categories_total"])
+        result.categories_success = defaultdict(lambda: 0)
+        result.categories_success.update(data["categories_success"])
+        return result
+
 
 @subscribe
 def top_successful_categories(

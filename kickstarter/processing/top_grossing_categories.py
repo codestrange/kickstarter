@@ -21,6 +21,22 @@ class GrossingCategoriesModel:
             result.append(self.categories[item[1]])
         return result
 
+    def to_json(self):
+        return {
+            "counter": self.counter,
+            "categories": {key: value.dict() for key, value in self.categories.items()},
+        }
+
+    @staticmethod
+    def from_json(data):
+        categories = {
+            key: CategoryModel(**value) for key, value in data["categories"].items()
+        }
+        result = GrossingCategoriesModel(categories)
+        result.counter = defaultdict(lambda: 0)
+        result.counter.update(data["counter"])
+        return result
+
 
 @subscribe
 def top_grossing_categories(
