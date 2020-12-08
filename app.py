@@ -40,7 +40,11 @@ image = Image.open("images/header.jpg")
 st.image(image, use_column_width=True)
 
 """
-## ¿Qué es Kickstarter?
+> _Por: Carlos Bermudez Porto, Leynier Gutiérrez González y Tony Raúl Blanco Fernández_
+"""
+
+"""
+## ¿Qué es [Kickstarter](https://www.kickstarter.com)?
 
 Kickstarter es un sitio web de micromecenazgo para proyectos creativos.​ Mediante
 Kickstarter se ha financiado una amplia gama de proyectos, que van desde películas
@@ -75,7 +79,8 @@ un proyecto. También advierten a los líderes de proyectos que podrían ser
 responsables por los daños y perjuicios de los patrocinadores por no cumplir
 las promesas. Los proyectos también pueden fallar, incluso después de una
 recaudación de fondos exitosa, cuando los creadores subestiman los costos
-totales requeridos o las dificultades técnicas a ser superadas.
+totales requeridos o las dificultades técnicas a ser
+superadas. [[1]](https://es.wikipedia.org/wiki/Kickstarter)
 """
 
 """
@@ -241,8 +246,9 @@ Teniendo en cuenta la información anterior se puede notar que muchas de las
 categorías anteriores tuvieron un auge en Kickstarter durante los años del
 2009 al 2014, pero desde entonces ya casi no aparecen proyectos a partir de
 ese año. Un detalle interesante a tener en cuenta es que sobre esas fecha
-aparece Patreon como un competidor de Kickstarter en el mercado, lo que podría
-conllevar a que muchos proyectos se muden hacia esta nueva plataforma.
+aparece [Patreon](https://www.patreon.com/) como un competidor de Kickstarter
+en el mercado, lo que podría conllevar a que muchos proyectos se muden hacia
+esta nueva plataforma.
 """
 
 """
@@ -256,6 +262,8 @@ image = Image.open("images/comics_2_patreon.jpg")
 st.image(image, use_column_width=True)
 
 """
+> Tomado de [graphtreon.com](https://graphtreon.com)
+
 Se puede observar como en la plataforma de Patreon el dinero recaudado y la
 cantidad de creadores ha ido en aumento desde el 2016.
 """
@@ -282,6 +290,8 @@ with col_right:
     st.image(image, use_column_width=True)
 
 """
+> Tomado de [graphtreon.com](https://graphtreon.com)
+
 Al igual que los cómics en Patreon se puede observar cómo el dinero recaudado
 y la cantidad de creadores ha ido en aumento desde el 2016 en ambas categorías
 (animación y video).
@@ -478,6 +488,9 @@ fig.update_layout(
 fig
 
 """
+> Idea de análisis tomada
+de: [icopartners.com](https://icopartners.com/2020/01/kickstarter-and-games-in-2019)
+
 Examinar los proyectos por nivel de financiación es probablemente el mejor
 indicador para entender el entorno de Kickstarter. Se puede observar como la
 cantidad de proyectos por cada nivel de financiación han ido creciendo
@@ -515,7 +528,9 @@ través de la sección de comentarios, dando a los usuarios una valoración del
 producto y a los diseñadores una idea de la aceptación del producto. La
 comunidad se convierte en parte de una narrativa en la que ellos y los
 desarrolladores luchan juntos contra el tiempo para alcanzar la fecha límite
-de financiación y los ambiciosos objetivos.
+de financiación y los ambiciosos
+objetivos. [[2]
+](https://www.boardgameatlas.com/forum/Xy8J2tXge2/how-kickstarter-has-changed-board-games-)
 """
 
 """
@@ -524,13 +539,30 @@ de financiación y los ambiciosos objetivos.
 Las influencias externas complicaron el objetivo de Kickstarter a lo largo de
 2019. La principal de ellas es el esfuerzo continuo de sindicalización dentro
 de la empresa . Tanto la gerencia de Kickstarter como el incipiente Kickstarter
-United han acordado un apagón de los medios hasta que se resuelva el problema. El
-18 de febrero de 2020 los empleados de Kickstarter votaron para formar un
+United han acordado un apagón de los medios hasta que se resuelva el
+problema. [[3]
+](https://www.polygon.com/2019/9/16/20868406/kickstarter-union-firings-dispute-petition)
+
+El 18 de febrero de 2020 los empleados de Kickstarter votaron para formar un
 sindicato, convirtiéndose en la primera gran empresa de tecnología de los Estados
-Unidos en hacerlo.
+Unidos en hacerlo. [[4]](https://kickstarterunited.org)
 
 Aún más amenazante es la guerra comercial en curso entre Estados Unidos y
 China. Muchos juegos de mesa se fabrican en China, y los esfuerzos de la
 administración del expresidente Trump de los Estados Unidos por ejercer presión
-han creado malestar entre los creadores de juegos de mesa.
+han creado malestar entre los creadores de juegos de
+mesa. [[5]](https://www.polygon.com/2019/6/5/18652411/trump-china-tariff-board-games)
+"""
+
+"""
+## Referencias
+
+1. [Kickstarter Wikipedia](https://es.wikipedia.org/wiki/Kickstarter)
+2. [How Kickstarter has CHANGED Board Games
+](https://www.boardgameatlas.com/forum/Xy8J2tXge2/how-kickstarter-has-changed-board-games-)
+3. [Kickstarter under fire from creators over labor dispute
+](https://www.polygon.com/2019/9/16/20868406/kickstarter-union-firings-dispute-petition)
+4. [Kickstarter United](https://kickstarterunited.org)
+5. [Trump’s tariffs could ruin the American board gameindustry
+](https://www.polygon.com/2019/6/5/18652411/trump-china-tariff-board-games)
 """
