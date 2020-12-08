@@ -101,7 +101,7 @@ with col_left:
     # data = pd.DataFrame(
     #     [
     #         {
-    #             "Nombre": item.name,
+    #             "Nombre": item.translation,
     #             "$ Recaudados": grossing_gategories_model.counter[item.id],
     #         }
     #         for item in grossing_categories
@@ -118,7 +118,7 @@ with col_right:
     # data = pd.DataFrame(
     #     [
     #         {
-    #             "Nombre": item.name,
+    #             "Nombre": item.translation,
     #             "% Éxitos": str(
     #                 round(
     #                     successful_categories_model.categories_success[item.id]
@@ -143,7 +143,7 @@ with col_right:
 # data = pd.DataFrame(
 #     [
 #         {
-#             "name": item.name,
+#             "name": item.translation,
 #             "pledged": grossing_gategories_model.counter[item.id],
 #             "success": round(
 #                 successful_categories_model.categories_success[item.id]
@@ -183,8 +183,8 @@ timeline = go.Figure()  # type: ignore
 # data = pd.DataFrame(
 #     [
 #         {
-#             "name_total": cat.name,
-#             "name_success": cat.name + " Exitosos",
+#             "name_total": cat.translation,
+#             "name_success": cat.translation + " Exitosos",
 #             "x_total": [
 #                 (
 #                     monthly_categories_totals_model.dates[i].year,
@@ -347,16 +347,15 @@ fig
 recaudado y por año**
 """
 
+# dates, values, labels = tabletop_games_model.successful_segmented_by_year()
 # data = pd.DataFrame(
 #     [
 #         {
-#             "date": date.year,
+#             "date": [date.year for date in dates],
 #             "value": value,
 #             "label": label,
 #         }
-#         for date, value, label in zip(
-#             *tabletop_games_model.successful_segmented_by_year()
-#         )
+#         for value, label in zip(values, labels)
 #     ]
 # )
 # save_data("tabletop_games_4", data.to_dict())
@@ -364,8 +363,8 @@ data = pd.DataFrame.from_dict(load_data("tabletop_games_4"))
 
 fig = go.Figure(  # type: ignore
     data=[
-        go.Bar(name=label, x=data.date, y=item)  # type: ignore
-        for item, label in zip(data.value, data.label)
+        go.Bar(name=label, x=date, y=item)  # type: ignore
+        for date, item, label in zip(data.date, data.value, data.label)
     ],
     layout=go.Layout(barmode="stack"),  # type: ignore
 )
@@ -376,16 +375,15 @@ fig
 por el dinero recaudado y por año**
 """
 
+# dates, values, labels = tabletop_games_model.pledged_segmented_by_year()
 # data = pd.DataFrame(
 #     [
 #         {
-#             "date": date.year,
+#             "date": [date.year for date in dates],
 #             "value": value,
 #             "label": label,
 #         }
-#         for date, value, label in zip(
-#             *tabletop_games_model.pledged_segmented_by_year(),
-#         )
+#         for value, label in zip(values, labels)
 #     ]
 # )
 # save_data("tabletop_games_5", data.to_dict())
@@ -393,8 +391,8 @@ data = pd.DataFrame.from_dict(load_data("tabletop_games_5"))
 
 fig = go.Figure(  # type: ignore
     data=[
-        go.Bar(name=label, x=data.date, y=item)  # type: ignore
-        for item, label in zip(data.value, data.label)
+        go.Bar(name=label, x=date, y=item)  # type: ignore
+        for date, item, label in zip(data.date, data.value, data.label)
     ],
     layout=go.Layout(barmode="stack"),  # type: ignore
 )
@@ -439,4 +437,21 @@ producto y a los diseñadores una idea de la aceptación del producto. La
 comunidad se convierte en parte de una narrativa en la que ellos y los
 desarrolladores luchan juntos contra el tiempo para alcanzar la fecha límite
 de financiación y los ambiciosos objetivos.
+"""
+
+"""
+## Posibles amenazas al sector de Juegos de Mesa y Kickstarter
+
+Las influencias externas complicaron el objetivo de Kickstarter a lo largo de
+2019. La principal de ellas es el esfuerzo continuo de sindicalización dentro
+de la empresa . Tanto la gerencia de Kickstarter como el incipiente Kickstarter
+United han acordado un apagón de los medios hasta que se resuelva el problema. El
+18 de febrero de 2020 los empleados de Kickstarter votaron para formar un
+sindicato, convirtiéndose en la primera gran empresa de tecnología de los Estados
+Unidos en hacerlo.
+
+Aún más amenazante es la guerra comercial en curso entre Estados Unidos y
+China. Muchos juegos de mesa se fabrican en China, y los esfuerzos de la
+administración del expresidente Trump de los Estados Unidos por ejercer presión
+han creado malestar entre los creadores de juegos de mesa.
 """
