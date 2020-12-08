@@ -242,9 +242,56 @@ categorías anteriores tuvieron un auge en Kickstarter durante los años del
 2009 al 2014, pero desde entonces ya casi no aparecen proyectos a partir de
 ese año. Un detalle interesante a tener en cuenta es que sobre esas fecha
 aparece Patreon como un competidor de Kickstarter en el mercado, lo que podría
-conllevar a que muchos proyectos se muden hacia esta nueva plataforma. Pero con
-la categoría de juegos de mesa sucede algo interesante, y es que a partir de
-esta fecha los proyectos de esa categoría han ido en aumento, tanto el total de
+conllevar a que muchos proyectos se muden hacia esta nueva plataforma.
+"""
+
+"""
+### Cómics en Patreon
+"""
+
+image = Image.open("images/comics_1_patreon.jpg")
+st.image(image, use_column_width=True)
+
+image = Image.open("images/comics_2_patreon.jpg")
+st.image(image, use_column_width=True)
+
+"""
+Se puede observar como en la plataforma de Patreon el dinero recaudado y la
+cantidad de creadores ha ido en aumento desde el 2016.
+"""
+
+"""
+### Cortometrajes en Patreon
+
+Si bien no hay una categoría en Patreon de Cortometrajes exactamente, es posible
+tomar una idea juntando las categorías de Animación y Video.
+"""
+
+col_left, col_right = st.beta_columns(2)
+
+with col_left:
+    image = Image.open("images/shorts_1_patreon.jpg")
+    st.image(image, use_column_width=True)
+    image = Image.open("images/shorts_2_patreon.jpg")
+    st.image(image, use_column_width=True)
+
+with col_right:
+    image = Image.open("images/shorts_3_patreon.jpg")
+    st.image(image, use_column_width=True)
+    image = Image.open("images/shorts_4_patreon.jpg")
+    st.image(image, use_column_width=True)
+
+"""
+Al igual que los cómics en Patreon se puede observar cómo el dinero recaudado
+y la cantidad de creadores ha ido en aumento desde el 2016 en ambas categorías
+(animación y video).
+"""
+
+"""
+----------------------------------------------------------------------------
+
+Pero con la categoría de juegos de mesa sucede algo interesante, y es que a partir
+de esta fecha los proyectos de esa categoría han ido en aumento, tanto el total de
 proyectos en la categoría como el porcentaje de éxito de las campañas.
 """
 
@@ -391,7 +438,7 @@ fig = go.Figure(  # type: ignore
 
 fig.update_layout(
     xaxis_title="Año",
-    yaxis_title="USD Recaudados en Miles",
+    yaxis_title="Cantidad de Proyectos",
 )
 
 fig
@@ -425,7 +472,7 @@ fig = go.Figure(  # type: ignore
 
 fig.update_layout(
     xaxis_title="Año",
-    yaxis_title="USD Recaudados en Miles",
+    yaxis_title="USD Recaudados en Millones",
 )
 
 fig
