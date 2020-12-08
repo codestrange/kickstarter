@@ -230,6 +230,8 @@ for item in data.itertuples():
 
 timeline.update_layout(
     title_text="Cantidad de Proyectos vs Cantidad de Proyectos Exitosos",
+    xaxis_title="Fecha",
+    yaxis_title="Cantidad",
     xaxis_rangeslider_visible=True,
 )
 timeline
@@ -272,6 +274,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="overlay"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="USD Recaudados en millones",
+)
+
 fig
 
 """
@@ -308,6 +316,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="overlay"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="Cantidad",
+)
+
 fig
 
 """
@@ -340,6 +354,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="overlay"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="Porciento de Exito",
+)
+
 fig
 
 """
@@ -368,6 +388,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="stack"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="USD Recaudados en Miles",
+)
+
 fig
 
 """
@@ -396,6 +422,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="stack"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="USD Recaudados en Miles",
+)
+
 fig
 
 """
