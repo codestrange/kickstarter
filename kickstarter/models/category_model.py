@@ -7,6 +7,7 @@ class CategoryBaseModel(BaseModel):
 
 class CategoryModel(CategoryBaseModel):
     name: str
+    translation: str
     position: int
 
     def to_json(self):

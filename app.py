@@ -40,7 +40,11 @@ image = Image.open("images/header.jpg")
 st.image(image, use_column_width=True)
 
 """
-## ¿Qué es Kickstarter?
+> _Por: Carlos Bermudez Porto, Leynier Gutiérrez González y Tony Raúl Blanco Fernández_
+"""
+
+"""
+## ¿Qué es [Kickstarter](https://www.kickstarter.com)?
 
 Kickstarter es un sitio web de micromecenazgo para proyectos creativos.​ Mediante
 Kickstarter se ha financiado una amplia gama de proyectos, que van desde películas
@@ -75,7 +79,8 @@ un proyecto. También advierten a los líderes de proyectos que podrían ser
 responsables por los daños y perjuicios de los patrocinadores por no cumplir
 las promesas. Los proyectos también pueden fallar, incluso después de una
 recaudación de fondos exitosa, cuando los creadores subestiman los costos
-totales requeridos o las dificultades técnicas a ser superadas.
+totales requeridos o las dificultades técnicas a ser
+superadas. [[1]](https://es.wikipedia.org/wiki/Kickstarter)
 """
 
 """
@@ -101,7 +106,7 @@ with col_left:
     # data = pd.DataFrame(
     #     [
     #         {
-    #             "Nombre": item.name,
+    #             "Nombre": item.translation,
     #             "$ Recaudados": grossing_gategories_model.counter[item.id],
     #         }
     #         for item in grossing_categories
@@ -118,7 +123,7 @@ with col_right:
     # data = pd.DataFrame(
     #     [
     #         {
-    #             "Nombre": item.name,
+    #             "Nombre": item.translation,
     #             "% Éxitos": str(
     #                 round(
     #                     successful_categories_model.categories_success[item.id]
@@ -143,7 +148,7 @@ with col_right:
 # data = pd.DataFrame(
 #     [
 #         {
-#             "name": item.name,
+#             "name": item.translation,
 #             "pledged": grossing_gategories_model.counter[item.id],
 #             "success": round(
 #                 successful_categories_model.categories_success[item.id]
@@ -183,8 +188,8 @@ timeline = go.Figure()  # type: ignore
 # data = pd.DataFrame(
 #     [
 #         {
-#             "name_total": cat.name,
-#             "name_success": cat.name + " Exitosos",
+#             "name_total": cat.translation,
+#             "name_success": cat.translation + " Exitosos",
 #             "x_total": [
 #                 (
 #                     monthly_categories_totals_model.dates[i].year,
@@ -230,6 +235,8 @@ for item in data.itertuples():
 
 timeline.update_layout(
     title_text="Cantidad de Proyectos vs Cantidad de Proyectos Exitosos",
+    xaxis_title="Fecha",
+    yaxis_title="Cantidad",
     xaxis_rangeslider_visible=True,
 )
 timeline
@@ -239,10 +246,62 @@ Teniendo en cuenta la información anterior se puede notar que muchas de las
 categorías anteriores tuvieron un auge en Kickstarter durante los años del
 2009 al 2014, pero desde entonces ya casi no aparecen proyectos a partir de
 ese año. Un detalle interesante a tener en cuenta es que sobre esas fecha
-aparece Patreon como un competidor de Kickstarter en el mercado, lo que podría
-conllevar a que muchos proyectos se muden hacia esta nueva plataforma. Pero con
-la categoría de juegos de mesa sucede algo interesante, y es que a partir de
-esta fecha los proyectos de esa categoría han ido en aumento, tanto el total de
+aparece [Patreon](https://www.patreon.com/) como un competidor de Kickstarter
+en el mercado, lo que podría conllevar a que muchos proyectos se muden hacia
+esta nueva plataforma.
+"""
+
+"""
+### Cómics en Patreon
+"""
+
+image = Image.open("images/comics_1_patreon.jpg")
+st.image(image, use_column_width=True)
+
+image = Image.open("images/comics_2_patreon.jpg")
+st.image(image, use_column_width=True)
+
+"""
+> Tomado de [graphtreon.com](https://graphtreon.com)
+
+Se puede observar como en la plataforma de Patreon el dinero recaudado y la
+cantidad de creadores ha ido en aumento desde el 2016.
+"""
+
+"""
+### Cortometrajes en Patreon
+
+Si bien no hay una categoría en Patreon de Cortometrajes exactamente, es posible
+tomar una idea juntando las categorías de Animación y Video.
+"""
+
+col_left, col_right = st.beta_columns(2)
+
+with col_left:
+    image = Image.open("images/shorts_1_patreon.jpg")
+    st.image(image, use_column_width=True)
+    image = Image.open("images/shorts_2_patreon.jpg")
+    st.image(image, use_column_width=True)
+
+with col_right:
+    image = Image.open("images/shorts_3_patreon.jpg")
+    st.image(image, use_column_width=True)
+    image = Image.open("images/shorts_4_patreon.jpg")
+    st.image(image, use_column_width=True)
+
+"""
+> Tomado de [graphtreon.com](https://graphtreon.com)
+
+Al igual que los cómics en Patreon se puede observar cómo el dinero recaudado
+y la cantidad de creadores ha ido en aumento desde el 2016 en ambas categorías
+(animación y video).
+"""
+
+"""
+----------------------------------------------------------------------------
+
+Pero con la categoría de juegos de mesa sucede algo interesante, y es que a partir
+de esta fecha los proyectos de esa categoría han ido en aumento, tanto el total de
 proyectos en la categoría como el porcentaje de éxito de las campañas.
 """
 
@@ -272,14 +331,29 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="overlay"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="USD Recaudados en millones",
+)
+
 fig
 
 """
-El dinero recaudado por los proyectos de Juegos de Mesa en Kickstarter
-ha ido aumentando en el tiempo sostenidamente, llegando a alcanzar cifras
-astronómicas como 200 millones de dólares. Notar los ligeros descensos en
-el 2014 y 2020, que a priori se pueden justificar con apariciones de
-plataformas alternativas y de la pandemia de la Covid-19 respectivamente.
+El dinero recaudado por los proyectos de Juegos de Mesa en Kickstarter ha ido
+aumentando en el tiempo sostenidamente, llegando a alcanzar cifras astronómicas
+como 200 millones de dólares. Notar los ligeros descensos en el 2014 y 2020. En
+el caso del año 2014 la web de Kickstarter sufrió varios  cambios a lo largo del
+año. Al ser esta la única fuente posible de extracción  de datos de los proyectos,
+estos cambios hicieron que muchos de los motores  que los recogen sufrieran
+problemas para realizar su tarea. Por tanto se  pudiera explicar esta ligera
+diferencia en cuanto a la recaudación de los  proyectos en ese año. Está también
+el hecho de que ese año fue considerado un  buen año para la plataforma
+[Indiegogo](https://www.indiegogo.com),
+la cual es un rival de Kickstarter  en el sector. Para el 2020, a pesar de aun no
+estar finalizado el año, se  puede ver que la pandemia de Covid-19 tuvo su impacto
+en este sector. Esto  producto de la crisis económica que afectó a las personas y
+sus posibles  donaciones.
 """
 
 """
@@ -308,6 +382,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="overlay"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="Cantidad",
+)
+
 fig
 
 """
@@ -340,6 +420,12 @@ fig = go.Figure(  # type: ignore
     ],
     layout=go.Layout(barmode="overlay"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="Porciento de Exito",
+)
+
 fig
 
 """
@@ -347,16 +433,15 @@ fig
 recaudado y por año**
 """
 
+# dates, values, labels = tabletop_games_model.successful_segmented_by_year()
 # data = pd.DataFrame(
 #     [
 #         {
-#             "date": date.year,
+#             "date": [date.year for date in dates],
 #             "value": value,
 #             "label": label,
 #         }
-#         for date, value, label in zip(
-#             *tabletop_games_model.successful_segmented_by_year()
-#         )
+#         for value, label in zip(values, labels)
 #     ]
 # )
 # save_data("tabletop_games_4", data.to_dict())
@@ -364,11 +449,17 @@ data = pd.DataFrame.from_dict(load_data("tabletop_games_4"))
 
 fig = go.Figure(  # type: ignore
     data=[
-        go.Bar(name=label, x=data.date, y=item)  # type: ignore
-        for item, label in zip(data.value, data.label)
+        go.Bar(name=label, x=date, y=item)  # type: ignore
+        for date, item, label in zip(data.date, data.value, data.label)
     ],
     layout=go.Layout(barmode="stack"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="Cantidad de Proyectos",
+)
+
 fig
 
 """
@@ -376,16 +467,15 @@ fig
 por el dinero recaudado y por año**
 """
 
+# dates, values, labels = tabletop_games_model.pledged_segmented_by_year()
 # data = pd.DataFrame(
 #     [
 #         {
-#             "date": date.year,
+#             "date": [date.year for date in dates],
 #             "value": value,
 #             "label": label,
 #         }
-#         for date, value, label in zip(
-#             *tabletop_games_model.pledged_segmented_by_year(),
-#         )
+#         for value, label in zip(values, labels)
 #     ]
 # )
 # save_data("tabletop_games_5", data.to_dict())
@@ -393,14 +483,23 @@ data = pd.DataFrame.from_dict(load_data("tabletop_games_5"))
 
 fig = go.Figure(  # type: ignore
     data=[
-        go.Bar(name=label, x=data.date, y=item)  # type: ignore
-        for item, label in zip(data.value, data.label)
+        go.Bar(name=label, x=date, y=item)  # type: ignore
+        for date, item, label in zip(data.date, data.value, data.label)
     ],
     layout=go.Layout(barmode="stack"),  # type: ignore
 )
+
+fig.update_layout(
+    xaxis_title="Año",
+    yaxis_title="USD Recaudados en Millones",
+)
+
 fig
 
 """
+> Idea de análisis tomada
+de: [icopartners.com](https://icopartners.com/2020/01/kickstarter-and-games-in-2019)
+
 Examinar los proyectos por nivel de financiación es probablemente el mejor
 indicador para entender el entorno de Kickstarter. Se puede observar como la
 cantidad de proyectos por cada nivel de financiación han ido creciendo
@@ -438,5 +537,41 @@ través de la sección de comentarios, dando a los usuarios una valoración del
 producto y a los diseñadores una idea de la aceptación del producto. La
 comunidad se convierte en parte de una narrativa en la que ellos y los
 desarrolladores luchan juntos contra el tiempo para alcanzar la fecha límite
-de financiación y los ambiciosos objetivos.
+de financiación y los ambiciosos
+objetivos. [[2]
+](https://www.boardgameatlas.com/forum/Xy8J2tXge2/how-kickstarter-has-changed-board-games-)
+"""
+
+"""
+## Posibles amenazas al sector de Juegos de Mesa y Kickstarter
+
+Las influencias externas complicaron el objetivo de Kickstarter a lo largo de
+2019. La principal de ellas es el esfuerzo continuo de sindicalización dentro
+de la empresa . Tanto la gerencia de Kickstarter como el incipiente Kickstarter
+United han acordado un apagón de los medios hasta que se resuelva el
+problema. [[3]
+](https://www.polygon.com/2019/9/16/20868406/kickstarter-union-firings-dispute-petition)
+
+El 18 de febrero de 2020 los empleados de Kickstarter votaron para formar un
+sindicato, convirtiéndose en la primera gran empresa de tecnología de los Estados
+Unidos en hacerlo. [[4]](https://kickstarterunited.org)
+
+Aún más amenazante es la guerra comercial en curso entre Estados Unidos y
+China. Muchos juegos de mesa se fabrican en China, y los esfuerzos de la
+administración del expresidente Trump de los Estados Unidos por ejercer presión
+han creado malestar entre los creadores de juegos de
+mesa. [[5]](https://www.polygon.com/2019/6/5/18652411/trump-china-tariff-board-games)
+"""
+
+"""
+## Referencias
+
+1. [Kickstarter Wikipedia](https://es.wikipedia.org/wiki/Kickstarter)
+2. [How Kickstarter has CHANGED Board Games
+](https://www.boardgameatlas.com/forum/Xy8J2tXge2/how-kickstarter-has-changed-board-games-)
+3. [Kickstarter under fire from creators over labor dispute
+](https://www.polygon.com/2019/9/16/20868406/kickstarter-union-firings-dispute-petition)
+4. [Kickstarter United](https://kickstarterunited.org)
+5. [Trump’s tariffs could ruin the American board gameindustry
+](https://www.polygon.com/2019/6/5/18652411/trump-china-tariff-board-games)
 """
