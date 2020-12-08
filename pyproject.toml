@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kickstarter"
-version = "0.2.1"
+version = "1.0.0"
 description = ""
 authors = ["leynier <leynier41@gmail.com>"]
 homepage = "https://github.com/codestrange/kickstarter"
