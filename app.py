@@ -333,13 +333,13 @@ fig
 El dinero recaudado por los proyectos de Juegos de Mesa en Kickstarter
 ha ido aumentando en el tiempo sostenidamente, llegando a alcanzar cifras
 astronómicas como 200 millones de dólares. Notar los ligeros descensos en
-el 2014 y 2020. En el caso del año 2014 la web de kickstarter sufrió varios 
+el 2014 y 2020. En el caso del año 2014 la web de Kickstarter sufrió varios 
 cambios a lo largo del año. Al ser esta la única fuente posible de extracción 
 de datos de los proyectos, estos cambios hicieron que muchos de los motores 
 que los recogen sufrieran problemas para realizar su tarea. Por tanto se 
 pudiera explicar esta ligera diferencia en cuanto a la recaudación de los 
-proyectos en ese año. Esta también el hecho de que ese año fue considerado un 
-buen año para la plataforma Indiegogo, la cual es un rival de kickstarter 
+proyectos en ese año. Está también el hecho de que ese año fue considerado un 
+buen año para la plataforma Indiegogo, la cual es un rival de Kickstarter 
 en el sector. Para el 2020, a pesar de aun no estar finalizado el año, se 
 puede ver que la pandemia de Covid-19 tuvo su impacto en este sector. Esto 
 producto de la crisis económica que afecto a las personas y sus posibles 
