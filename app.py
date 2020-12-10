@@ -564,6 +564,24 @@ mesa. [[5]](https://www.polygon.com/2019/6/5/18652411/trump-china-tariff-board-g
 """
 
 """
+## Metodología
+
+Los análisis anteriores fueron realizados a partir de los datos obtenidos y 
+publicados por la página [webrobots.io/kickstarter-datasets](https://webrobots.io/kickstarter-datasets/).
+Los datos de los proyectos se encuentran en varios paquetes, obtenidos de 
+scrappear el sitio de Kickstarter los días 15 de cada mes desde el año 2015 
+hasta noviembre del 2020. Debido a que los proyectos varían en el tiempo
+muchos se encuentran enmarcados en diferentes paquetes de los mencionados.
+Para evitar repeticiones fue necesario realizar un preprocesamiento de los
+datos de los proyectos, a la vez que se realizaba un filtrado de algunas 
+de sus propiedades. Con los datos resultantes es que se realizaron los 
+diferentes estudios mostrados en este artículo.
+
+Los códigos que realizan ambos procesamientos de los datos son accesibles 
+desde nuestro [repositorio](https://github.com/codestrange/kickstarter/tree/main/kickstarter) en Github.
+"""
+
+"""
 ## Referencias
 
 1. [Kickstarter Wikipedia](https://es.wikipedia.org/wiki/Kickstarter)
