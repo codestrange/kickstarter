@@ -507,6 +507,77 @@ equitativamente, manteniendo una homogeneidad en ese sentido.
 """
 
 """
+## ¿Qué juegos de mesa han recaudado más?
+
+Los diez juegos de mesa que han recaudado más dinero a lo largo del tiempo han sido
+los siguientes:
+"""
+
+# top_ten_all_the_time_projects = tabletop_games_model.top_ten_all_the_time_games()
+# data = pd.DataFrame(
+#     [
+#         {
+#             "Nombre": project.name,
+#             "Recaudación": project.pledged,
+#         }
+#         for project in top_ten_all_the_time_projects
+#     ]
+# )
+# save_data("top_ten_all_the_time_projects", data.to_dict())
+data = pd.DataFrame.from_dict(load_data("top_ten_all_the_time_projects"))
+
+data
+
+"""
+Interesante como los dos que más han recaudado se separan bastante del
+resto representando el `31.16%` del dinero total recaudado del top 10.
+"""
+
+"""
+Los diez juegos de mesa que han recaudado más en el transcurso del 2020:
+"""
+
+# top_ten_2020_games = tabletop_games_model.top_ten_2020_games()
+# data = pd.DataFrame(
+#     [
+#         {
+#             "Nombre": project.name,
+#             "Recaudación": project.pledged,
+#         }
+#         for project in top_ten_2020_games
+#     ]
+# )
+# save_data("top_ten_2020_games", data.to_dict())
+data = pd.DataFrame.from_dict(load_data("top_ten_2020_games"))
+
+data
+
+"""
+El 2020 está siendo un año con juegos con muy buena recaudación, teniendo 7 juegos
+en común con el top 10 de todos los tiempos, destacándose **Frosthaven** como el
+juego de mesa con más recaudación de todos los tiempos.
+"""
+
+# inter_set = set(top_ten_all_the_time_projects).intersection(set(top_ten_2020_games))
+
+# inter_list = list(inter_set)
+# inter_list.sort(key=lambda x: x.pledged, reverse=True)
+
+# data = pd.DataFrame(
+#     [
+#         {
+#             "Nombre": project.name,
+#             "Recaudación": project.pledged,
+#         }
+#         for project in inter_list
+#     ]
+# )
+# save_data("inter_list", data.to_dict())
+data = pd.DataFrame.from_dict(load_data("inter_list"))
+
+data
+
+"""
 ## ¿Por qué el auge de los Juegos de Mesa en Kickstarter?
 
 Uno de los motivos más claros es que Kickstarter ofrece la oportunidad de
