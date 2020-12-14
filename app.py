@@ -2,9 +2,13 @@ import json
 from datetime import datetime
 
 import pandas as pd
+
+# import plotly
 import plotly.graph_objects as go
 import streamlit as st
 from PIL import Image
+
+# from tabulate import tabulate
 
 # from kickstarter.core import get_favorite_categories, load_json
 
@@ -140,6 +144,7 @@ with col_right:
     # save_data("top25successful", data.to_dict())
     data = pd.DataFrame.from_dict(load_data("top25successful"))
     st.write(data)
+    # st.write(tabulate(data, tablefmt="html"))
 
 """
 **Categorías más exitosas**:
@@ -240,6 +245,7 @@ timeline.update_layout(
     xaxis_rangeslider_visible=True,
 )
 timeline
+# plotly.offline.plot(timeline, filename="timeline.html")  # type: ignore
 
 """
 Teniendo en cuenta la información anterior se puede notar que muchas de las
@@ -338,6 +344,7 @@ fig.update_layout(
 )
 
 fig
+# plotly.offline.plot(fig, filename="tabletop_games_1.html")  # type: ignore
 
 """
 El dinero recaudado por los proyectos de Juegos de Mesa en Kickstarter ha ido
@@ -389,6 +396,7 @@ fig.update_layout(
 )
 
 fig
+# plotly.offline.plot(fig, filename="tabletop_games_2.html")  # type: ignore
 
 """
 Como es lógico a la par del aumento del dinero recaudado por los proyectos
@@ -427,6 +435,7 @@ fig.update_layout(
 )
 
 fig
+# plotly.offline.plot(fig, filename="tabletop_games_3.html")  # type: ignore
 
 """
 **Cantidad de proyectos exitosos de Juegos de Mesa segmentados por el dinero
@@ -461,6 +470,7 @@ fig.update_layout(
 )
 
 fig
+# plotly.offline.plot(fig, filename="tabletop_games_4.html")  # type: ignore
 
 """
 **Dinero recaudado de los proyectos exitosos de Juegos de Mesa segmentados
@@ -495,6 +505,7 @@ fig.update_layout(
 )
 
 fig
+# plotly.offline.plot(fig, filename="tabletop_games_5.html")  # type: ignore
 
 """
 > Idea de análisis tomada
@@ -527,6 +538,8 @@ los siguientes:
 data = pd.DataFrame.from_dict(load_data("top_ten_all_the_time_projects"))
 
 data
+# "top_ten_all_the_time_projects"
+# st.write(tabulate(data, tablefmt="html"))
 
 """
 Interesante como los dos que más han recaudado se separan bastante del
@@ -551,6 +564,8 @@ Los diez juegos de mesa que han recaudado más en el transcurso del 2020:
 data = pd.DataFrame.from_dict(load_data("top_ten_2020_games"))
 
 data
+# "top_ten_2020_games"
+# st.write(tabulate(data, tablefmt="html"))
 
 """
 El 2020 está siendo un año con juegos con muy buena recaudación, teniendo 7 juegos
@@ -576,6 +591,8 @@ juego de mesa con más recaudación de todos los tiempos.
 data = pd.DataFrame.from_dict(load_data("inter_list"))
 
 data
+# "inter_list"
+# st.write(tabulate(data, tablefmt="html"))
 
 """
 ## ¿Por qué el auge de los Juegos de Mesa en Kickstarter?

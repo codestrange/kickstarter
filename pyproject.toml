@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kickstarter"
-version = "1.0.0"
+version = "1.1.0"
 description = ""
 authors = ["leynier <leynier41@gmail.com>"]
 homepage = "https://github.com/codestrange/kickstarter"
@@ -19,6 +19,7 @@ streamlit = "^0.72.0"
 pydantic = "^1.7.3"
 plotly = "^4.14.1"
 scipy = "^1.5.4"
+tabulate = "^0.8.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
