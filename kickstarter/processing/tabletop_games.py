@@ -117,6 +117,20 @@ class TabletopGamesModel:
             return 3
         return 4
 
+    def top_ten_all_the_time_games(self) -> List[ProjectModel]:
+        projects = [project for project in self.projects]
+        projects.sort(key=lambda x: x.pledged, reverse=True)
+        return projects[:10]
+
+    def top_ten_2020_games(self) -> List[ProjectModel]:
+        projects = [
+            project
+            for project in self.projects
+            if project.state_changed_at.year == 2020
+        ]
+        projects.sort(key=lambda x: x.pledged, reverse=True)
+        return projects[:10]
+
     def to_json(self):
         return {
             "projects": [value.to_json() for value in self.projects],
