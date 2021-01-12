@@ -694,7 +694,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "plotly"
-version = "4.14.1"
+version = "4.14.2"
 description = "An open-source, interactive data visualization library for Python"
 category = "main"
 optional = false
@@ -1229,7 +1229,7 @@ notebook = ">=4.4.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "c6e26a16a00db148796c4c98e32de6326b61b1a4af9076433f0938ecfa63eb14"
+content-hash = "ccd235f92e4b2f4fa21df4892ed7606e03a4d4f14e400cbe27528205bd996605"
 
 [metadata.files]
 altair = [
@@ -1654,8 +1654,8 @@ pillow = [
     {file = "Pillow-8.0.1.tar.gz", hash = "sha256:11c5c6e9b02c9dac08af04f093eb5a2f84857df70a7d4a6a6ad461aca803fb9e"},
 ]
 plotly = [
-    {file = "plotly-4.14.1-py2.py3-none-any.whl", hash = "sha256:f0462e494d324a1649dee0208ab04fc7a158740488373d31a499f6d691167a04"},
-    {file = "plotly-4.14.1.tar.gz", hash = "sha256:f2a38726ddc7ce185a277c78a41b50bb8cfcfa4f53b45a481417401cadc0454c"},
+    {file = "plotly-4.14.2-py2.py3-none-any.whl", hash = "sha256:955b58509200240b8a97c59194b0a7460cab5b4aa74ef255af60e6d904dda48e"},
+    {file = "plotly-4.14.2.tar.gz", hash = "sha256:7eeac0fcd40b0556e04c3ed331d1b56ba6bd2bec4ebef7dee13e2ae6126a3f4e"},
 ]
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
