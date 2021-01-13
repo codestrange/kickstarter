@@ -17,7 +17,7 @@ python = "^3.8"
 typer = "^0.3.2"
 streamlit = "^0.73.1"
 pydantic = "^1.7.3"
-plotly = "^4.14.1"
+plotly = "^4.14.3"
 scipy = "^1.5.4"
 tabulate = "^0.8.7"
 
