@@ -15,7 +15,7 @@ kickstarter = "kickstarter.main:app"
 [tool.poetry.dependencies]
 python = "^3.8"
 typer = "^0.3.2"
-streamlit = "^0.85.1"
+streamlit = "^0.86.0"
 pydantic = "^1.8.2"
 plotly = "^5.1.0"
 scipy = "^1.5.4"
