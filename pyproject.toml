@@ -22,7 +22,7 @@ scipy = "^1.5.4"
 tabulate = "^0.8.7"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.0.0"
+pytest = "^7.0.1"
 flake8 = "^4.0.1"
 black = "^22.1"
 isort = "^5.10.1"
