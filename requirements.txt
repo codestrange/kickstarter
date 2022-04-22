@@ -55,7 +55,7 @@ py==1.9.0; python_version >= "3.6" and python_full_version < "3.0.0" and impleme
 pyarrow==7.0.0; python_version >= "3.6"
 pycparser==2.20; python_version >= "3.6" and python_full_version < "3.0.0" and implementation_name === "pypy" or implementation_name === "pypy" and python_version >= "3.6" and python_full_version >= "3.4.0"
 pydantic==1.7.3; python_version >= "3.6"
-pydeck==0.5.0; python_version >= "3.6"
+pydeck==0.7.1; python_version >= "3.6"
 pygments==2.7.2; python_version >= "3.7"
 pyparsing==2.4.7; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
 pyrsistent==0.18.1; python_version >= "3.6"
