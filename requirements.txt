@@ -16,7 +16,7 @@ click==7.1.2; python_version >= "3.6" and python_full_version < "3.0.0" or pytho
 colorama==0.4.4; python_version >= "3.7" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.7" and python_full_version >= "3.5.0"
 decorator==4.4.2; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.2.0" and python_version >= "3.7"
 defusedxml==0.6.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
-entrypoints==0.3; python_version >= "3.6"
+entrypoints==0.4; python_version >= "3.6"
 gitdb==4.0.9; python_version >= "3.6"
 gitpython==3.1.27; python_version >= "3.6"
 idna==2.10; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
